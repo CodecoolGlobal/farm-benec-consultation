@@ -1,7 +1,7 @@
 package com.bencef.farm.plants;
 
 public abstract class Trait {
-    private Plant plant;
+    protected Plant plant;
 
     public Trait(Plant plant) {
         this.plant = plant;
