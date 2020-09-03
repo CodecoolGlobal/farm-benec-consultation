@@ -1,0 +1,46 @@
+@startuml
+
+Plant <|-- AlmondTree
+Plant <|-- Spruce
+Plant <|-- Juniper
+Farm o-- Plant
+
+Trait <|-- ShroomGrower
+Trait <|-- EverGreen
+
+abstract class Plant {
+  # monthlyProduce: int
+  - traits: List<Trait>
+  + growFood(): void
+}
+
+abstract class Trait {
+  - plant: Plant
+  + Trait(plant: Plant)
+  + apply(): TraitResult
+}
+
+enum TraitResult {
+  CONTINUE
+  ABORT
+}
+
+class Farm {
+  - plants: Set<Plant>
+  + plantPlant(plant: Plant): void
+  + startProductionForNumberOfMonths(numOfMonths: int)
+  + getTotalProduction(): int
+}
+
+class EverGreen {
+  - monthsUntilGrow: int
+}
+
+class ShroomGrower {
+  - shroomGrowChance: int
+  - productionIncrease: int
+  - rotChance: int
+  - productionDecrease: int
+}
+
+@enduml
